@@ -109,3 +109,60 @@
 			} );
 	} );
 }() );
+
+/* HeroAI runner: run the prompt on the server and show the answer as plain text. */
+( function () {
+	'use strict';
+	function fa( n ) {
+		return String( n ).replace( /\d/g, function ( d ) {
+			return '۰۱۲۳۴۵۶۷۸۹'[ d ];
+		} );
+	}
+	document.addEventListener( 'click', function ( event ) {
+		var button = event.target.closest && event.target.closest( '.promptica-hero-run' );
+		if ( ! button ) {
+			return;
+		}
+		var cfg = window.prompticaCore || {};
+		var box = button.closest( '.promptica-hero' );
+		var out = box.querySelector( '.promptica-hero-out' );
+		var input = box.querySelector( '.promptica-hero-input' );
+		var left = box.querySelector( '.promptica-hero-left' );
+		var label = button.textContent;
+		var body = new FormData();
+		body.append( 'action', 'promptica_heroai_run' );
+		body.append( 'nonce', cfg.heroNonce || '' );
+		body.append( 'post_id', box.dataset.post );
+		body.append( 'input', input ? input.value : '' );
+		button.disabled = true;
+		button.setAttribute( 'aria-busy', 'true' );
+		button.textContent = cfg.heroRunning || '…';
+		out.hidden = false;
+		out.classList.remove( 'is-error' );
+		out.classList.add( 'is-loading' );
+		out.textContent = '';
+		fetch( cfg.ajaxUrl, { method: 'POST', credentials: 'same-origin', body: body } )
+			.then( function ( r ) {
+				return r.json();
+			} )
+			.then( function ( res ) {
+				if ( ! res || ! res.success ) {
+					throw new Error( res && res.data && res.data.message ? res.data.message : '' );
+				}
+				out.textContent = res.data.text;
+				if ( left && res.data.left >= 0 && cfg.heroLeft ) {
+					left.textContent = cfg.heroLeft.replace( '%1$s', fa( res.data.left ) );
+				}
+			} )
+			.catch( function ( err ) {
+				out.classList.add( 'is-error' );
+				out.textContent = ( err && err.message ) || cfg.heroError || '×';
+			} )
+			.then( function () {
+				out.classList.remove( 'is-loading' );
+				button.disabled = false;
+				button.removeAttribute( 'aria-busy' );
+				button.textContent = label;
+			} );
+	} );
+}() );
