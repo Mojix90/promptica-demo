@@ -5,15 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>قالب پرامپتیکا | قالب وردپرس فروش پرامپت، دوره و اشتراک هوش مصنوعی</title>
 <meta name="description" content="پرامپتیکا قالب وردپرس فارسی و راست‌چین برای فروش پرامپت، دوره‌های آموزشی و اشتراک هوش مصنوعی؛ با اجرای آنلاین پرامپت از طریق هیرو ای‌آی، درگاه زرین‌پال و حالت تاریک.">
-<meta name="theme-color" content="#14132b">
+<meta name="theme-color" content="#08070d">
 <meta property="og:title" content="قالب وردپرس پرامپتیکا">
 <meta property="og:description" content="فروشگاه پرامپت و آکادمی هوش مصنوعی خود را در یک قالب راه‌اندازی کنید.">
-<meta property="og:image" content="lp/img/home.webp">
+<meta property="og:image" content="lp/img/og-cover.jpg">
 <link rel="preload" href="lp/fonts/Lalezar.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="lp/fonts/Vazirmatn.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="lp/css/atropos.min.css">
 <link rel="stylesheet" href="lp/css/lp.css">
 <script>document.documentElement.classList.add('js')</script>
+<script type="importmap">{"imports":{"three":"./lp/vendor/three.module.js","three/addons/":"./lp/vendor/addons/"}}</script>
+<link rel="modulepreload" href="lp/vendor/three.module.js">
+<link rel="modulepreload" href="lp/vendor/three.core.js">
 </head>
 <body>
 <a class="skip" href="#main">رفتن به محتوا</a>
@@ -46,7 +49,6 @@
 
 <main id="main">
 <section class="hero" id="top" aria-labelledby="hero-title">
- <canvas id="hero-canvas" aria-hidden="true"></canvas>
  <div class="wrap hero-grid">
   <div class="hero-copy">
    <span class="badge"><i>جدید ۱.۲</i>اجرای پرامپت با هیرو ای‌آی، داخل سایت خودتان</span>
@@ -62,15 +64,11 @@
     <div><strong>روشن و تاریک</strong>با تشخیص خودکار</div>
    </div>
   </div>
-  <div class="stage">
-   <div class="atropos hero-atropos">
-    <div class="atropos-scale"><div class="atropos-rotate"><div class="atropos-inner">
-     <div class="frame" data-atropos-offset="0"><div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>promptica.ir</span></div><img src="lp/img/home.webp" width="1200" height="750" alt="صفحهٔ اصلی قالب پرامپتیکا با بخش معرفی و ابزارهای هوش مصنوعی" fetchpriority="high"></div>
-     <div class="float-run" data-atropos-offset="7"><img src="lp/img/runner-card.webp" width="798" height="610" alt="جعبهٔ اجرای پرامپت با هیرو ای‌آی و خروجی مدل" loading="lazy"></div>
-     <div class="float-phone" data-atropos-offset="10"><img src="lp/img/m-home.webp" width="420" height="909" alt="نمای موبایل صفحهٔ اصلی" loading="lazy"></div>
-     <div class="float-chip" data-atropos-offset="12"><em aria-hidden="true"><svg width="14" height="14"><use href="#i-check"/></svg></em>پرداخت موفق زرین‌پال</div>
-    </div></div></div>
-   </div>
+  <div class="stage stage3d">
+   <img class="stage-fallback" src="lp/img/3d/hero-3d.webp" width="1168" height="1064" alt="کارت پرامپت طلایی پرامپتیکا با دکمهٔ «اجرا با هیرو ای‌آی» و حلقه‌های مداری" fetchpriority="high">
+   <canvas id="hero-canvas" aria-hidden="true"></canvas>
+   <div class="stage-chip chip-pay"><em aria-hidden="true"><svg width="14" height="14"><use href="#i-check"/></svg></em>پرداخت موفق زرین‌پال</div>
+   <div class="stage-chip chip-run"><em aria-hidden="true"><svg width="14" height="14"><use href="#i-lock"/></svg></em>فقط برای خریدار</div>
   </div>
  </div>
 </section>
@@ -91,12 +89,13 @@
     <span class="ic"><svg aria-hidden="true"><use href="#i-lock"/></svg></span>
     <h3>فروش پرامپت با قفل محتوا</h3>
     <p>متن کامل پرامپت فقط برای خریدار یا مشترک فعال نمایش داده می‌شود و بقیه پیش‌نمایش و دکمهٔ خرید می‌بینند. کپی با یک کلیک، نمونهٔ خروجی و تصویر نمونه.</p>
-    <div class="shot"><img src="lp/img/locked.webp" width="1200" height="750" alt="صفحهٔ پرامپت قفل‌شده با کارت خرید" loading="lazy"></div>
+    <div class="shot shot3d"><img src="lp/img/3d/scene-02-lock.webp" width="744" height="375" alt="نمای سه‌بعدی صفحهٔ پرامپت قفل‌شده کنار یک قفل طلایی" loading="lazy" decoding="async"></div>
    </article>
    <article class="tile t-course" data-reveal>
     <span class="ic"><svg aria-hidden="true"><use href="#i-cap"/></svg></span>
     <h3>آکادمی و پیشرفت درس</h3>
     <p>دوره با درس‌های ویدیویی؛ تیک هر درس بدون رفرش ذخیره می‌شود و جابه‌جایی درس‌ها پیشرفت کسی را خراب نمی‌کند.</p>
+    <div class="tile-img"><img src="lp/img/3d/scene-03-course.webp" width="744" height="375" alt="نمای سه‌بعدی صفحهٔ دوره با کلاه فارغ‌التحصیلی" loading="lazy" decoding="async"></div>
     <div class="progress" aria-hidden="true"><div><span class="bar"></span></div><small>۳ از ۴ درس تکمیل شده</small></div>
    </article>
    <article class="tile t-sub" data-reveal>
@@ -138,7 +137,7 @@
     <li><div><strong>امن از روز اول</strong><p>کلید فقط روی سرور است و متن پرامپت سمت سرور خوانده می‌شود؛ کسی که نخریده نمی‌تواند اجرا کند.</p></div></li>
    </ol>
    <div class="hai-models" aria-label="نمونهٔ مدل‌ها"><span>claude-sonnet</span><span>claude-opus</span><span>gpt-5.6-terra</span><span>gpt-4o</span><span>gemini-3.8-flash</span></div>
-   <p class="hai-note">حساب هیرو ای‌آی ندارید؟ <a href="https://heroai.ir/login/" target="_blank" rel="noopener">ساخت حساب رایگان</a></p>
+   <p class="hai-note">حساب هیرو ای‌آی ندارید؟ در سایت <span class="ltr">heroai.ir</span> به‌رایگان ثبت‌نام کنید.</p>
   </div>
   <div class="hai-shot" data-reveal>
    <div class="atropos hai-atropos"><div class="atropos-scale"><div class="atropos-rotate"><div class="atropos-inner">
@@ -154,14 +153,16 @@
   <div class="sec-head" data-reveal>
    <span class="kick">تصاویر محیط قالب و افزونه</span>
    <h2 id="s-title">صفحه‌به‌صفحه، همان چیزی که مشتری شما می‌بیند</h2>
-   <p>تصاویر مستقیم از دموی نصب‌شده گرفته شده‌اند. روی هر قاب بروید تا کل صفحه اسکرول شود.</p>
+   <p>تصاویر از دموی نصب‌شده گرفته شده‌اند. زیر هر نمای سه‌بعدی، صفحه‌ها را تک‌به‌تک ببینید؛ روی قاب‌های بلند بروید تا کل صفحه اسکرول شود.</p>
   </div>
   <div class="g-tabs" role="tablist" aria-label="نوع نمایش">
-   <button role="tab" aria-selected="true" aria-controls="g-desk" id="t-desk">دسکتاپ</button>
+   <button role="tab" aria-selected="true" aria-controls="g-desk" id="t-desk">دسکتاپ و موبایل</button>
    <button role="tab" aria-selected="false" aria-controls="g-dark" id="t-dark" tabindex="-1">حالت تاریک</button>
+   <button role="tab" aria-selected="false" aria-controls="g-admin" id="t-admin" tabindex="-1">پیشخوان و افزونه</button>
    <button role="tab" aria-selected="false" aria-controls="g-mob" id="t-mob" tabindex="-1">موبایل</button>
   </div>
   <div id="g-desk" role="tabpanel" aria-labelledby="t-desk">
+   <figure class="device" data-reveal><div class="atropos dev-atropos"><div class="atropos-scale"><div class="atropos-rotate"><div class="atropos-inner"><img src="lp/img/3d/dev-1-home-1400.webp" srcset="lp/img/3d/dev-1-home-800.webp 800w, lp/img/3d/dev-1-home-1400.webp 1400w" sizes="(max-width:1220px) calc(100vw - 32px), 1180px" width="1400" height="875" alt="صفحهٔ اصلی پرامپتیکا روی لپ‌تاپ، تبلت و موبایل در صحنهٔ سه‌بعدی" loading="lazy" decoding="async" data-atropos-offset="0"></div></div></div></div></figure>
    <div class="g-viewport" tabindex="0" aria-label="اسلایدر تصاویر دسکتاپ">
     <div class="g-track">
      <figure class="g-item"><div class="frame"><div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>صفحهٔ اصلی</span></div><div class="scrollshot"><img src="lp/img/full-home.webp" width="1000" height="3200" alt="کل صفحهٔ اصلی پرامپتیکا" loading="lazy"></div></div><figcaption><strong>صفحهٔ اصلی</strong><a href="home/">دیدن در دمو</a></figcaption></figure>
@@ -176,12 +177,20 @@
    </div>
   </div>
   <div id="g-dark" role="tabpanel" aria-labelledby="t-dark" hidden>
+   <figure class="device" data-reveal><div class="atropos dev-atropos"><div class="atropos-scale"><div class="atropos-rotate"><div class="atropos-inner"><img src="lp/img/3d/dev-2-dark-1400.webp" srcset="lp/img/3d/dev-2-dark-800.webp 800w, lp/img/3d/dev-2-dark-1400.webp 1400w" sizes="(max-width:1220px) calc(100vw - 32px), 1180px" width="1400" height="875" alt="حالت تاریک قالب پرامپتیکا روی لپ‌تاپ و موبایل" loading="lazy" decoding="async" data-atropos-offset="0"></div></div></div></div></figure>
    <div class="g-viewport" tabindex="0" aria-label="اسلایدر حالت تاریک">
     <div class="g-track">
      <figure class="g-item"><div class="frame"><img src="lp/img/dark-home.webp" width="1200" height="750" alt="صفحهٔ اصلی در حالت تاریک" loading="lazy"></div><figcaption><strong>صفحهٔ اصلی، تاریک</strong></figcaption></figure>
      <figure class="g-item"><div class="frame"><img src="lp/img/dark-prompt.webp" width="1200" height="750" alt="صفحهٔ پرامپت در حالت تاریک" loading="lazy"></div><figcaption><strong>تک پرامپت، تاریک</strong></figcaption></figure>
      <figure class="g-item"><div class="frame"><img src="lp/img/dark-courses.webp" width="1200" height="750" alt="دوره‌ها در حالت تاریک" loading="lazy"></div><figcaption><strong>دوره‌ها، تاریک</strong></figcaption></figure>
     </div>
+   </div>
+  </div>
+  <div id="g-admin" role="tabpanel" aria-labelledby="t-admin" hidden>
+   <figure class="device" data-reveal><div class="atropos dev-atropos"><div class="atropos-scale"><div class="atropos-rotate"><div class="atropos-inner"><img src="lp/img/3d/dev-3-admin-1400.webp" srcset="lp/img/3d/dev-3-admin-800.webp 800w, lp/img/3d/dev-3-admin-1400.webp 1400w" sizes="(max-width:1220px) calc(100vw - 32px), 1180px" width="1400" height="875" alt="پیشخوان اختصاصی پرامپتیکا روی لپ‌تاپ در صحنهٔ سه‌بعدی" loading="lazy" decoding="async" data-atropos-offset="0"></div></div></div></div></figure>
+   <div class="admin-shots">
+    <figure><div class="frame"><div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>ووکامرس ← پرامپتیکا</span></div><img src="lp/img/admin-heroai.webp" width="1200" height="750" alt="صفحهٔ تنظیمات افزونهٔ Promptica Core: کلید هیرو ای‌آی، مدل، سقف روزانه و تست اتصال" loading="lazy" decoding="async"></div><figcaption>تنظیمات افزونهٔ Promptica Core</figcaption></figure>
+    <figure><div class="frame"><img src="lp/img/3d/scene-07-admin.webp" width="744" height="375" alt="داشبورد پیشخوان پرامپتیکا با آمار فروشگاه و راهنمای شروع" loading="lazy" decoding="async"></div><figcaption>داشبورد پرامپتیکا در پیشخوان</figcaption></figure>
    </div>
   </div>
   <div id="g-mob" role="tabpanel" aria-labelledby="t-mob" hidden>
@@ -263,8 +272,8 @@
 
 <section class="cta" aria-labelledby="c-title">
  <div class="wrap">
-  <div data-reveal><h2 id="c-title">فروشگاه پرامپت خودتان را همین امروز باز کنید</h2><p>نسخهٔ ۱.۲ با اجرای آنلاین پرامپت از طریق هیرو ای‌آی.</p></div>
-  <div class="cta-actions"><a class="btn btn-buy" href="https://www.zhaket.com/web/promptica" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-cart"/></svg>خرید از ژاکت</a><a class="btn btn-line" href="home/">دموی زنده</a></div>
+  <div class="cta-cover" data-reveal><div class="atropos cover-atropos"><div class="atropos-scale"><div class="atropos-rotate"><div class="atropos-inner"><img src="lp/img/3d/cover-420.webp" srcset="lp/img/3d/cover-420.webp 420w, lp/img/3d/cover-700.webp 700w" sizes="(max-width:600px) 70vw, 300px" width="700" height="700" alt="کاور سه‌بعدی قالب پرامپتیکا: فروش پرامپت با قفل محتوا، اشتراک زمان‌دار و درگاه زرین‌پال" loading="lazy" decoding="async" data-atropos-offset="0"></div></div></div></div></div>
+  <div class="cta-text" data-reveal><h2 id="c-title">فروشگاه پرامپت خودتان را همین امروز باز کنید</h2><p>نسخهٔ ۱.۲ با اجرای آنلاین پرامپت از طریق هیرو ای‌آی.</p><div class="cta-actions"><a class="btn btn-buy" href="https://www.zhaket.com/web/promptica" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-cart"/></svg>خرید از ژاکت</a><a class="btn btn-line" href="home/">دموی زنده</a></div></div>
  </div>
 </section>
 </main>

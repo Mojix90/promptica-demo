@@ -56,6 +56,6 @@
   });
   if (bar) gsap.to(bar, { width: '75%', duration: 1.6, ease: 'power2.out', scrollTrigger: { trigger: bar, start: 'top 90%', once: true } });
   gsap.from('.hero-copy > *', { opacity: 0, y: 18, duration: .9, ease: 'power3.out', stagger: .09 });
-  gsap.from('.stage', { opacity: 0, y: 30, scale: .97, duration: 1.1, ease: 'power3.out', delay: .2 });
-  gsap.fromTo('.float-chip', { y: 0 }, { y: -8, duration: 2.2, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+  gsap.from('.stage', { opacity: 0, scale: .96, duration: 1.1, ease: 'power3.out', delay: .2 });
+  gsap.utils.toArray('.stage-chip').forEach(function(el, i){ gsap.fromTo(el, { y: 0 }, { y: -8, duration: 2.2 + i * .4, ease: 'sine.inOut', yoyo: true, repeat: -1 }); });
 })();
